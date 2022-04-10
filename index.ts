@@ -1,5 +1,4 @@
 // load dependencies
-import 'dotenv/config';
 import config from './config/keycloak.json';
 import Fastify from 'fastify';
 import { FastifyRequest, FastifyReply, FastifyInstance } from 'fastify';
