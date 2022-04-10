@@ -1,10 +1,10 @@
-// load dependencies
 import config from './config/keycloak.json';
 import Fastify from 'fastify';
 import { FastifyRequest, FastifyReply, FastifyInstance } from 'fastify';
 import Keycloak from 'keycloak-sami-js';
 
 async function initServer(): Promise<FastifyInstance> {
+	// init fastify
 	const fastify = Fastify({ logger: true });
 
 	// init keycloak
@@ -23,7 +23,7 @@ async function initServer(): Promise<FastifyInstance> {
 }
 
 (async () => {
-	// init fastify
+	// init app server
 	const fastify = await initServer();
 
 	// routes
