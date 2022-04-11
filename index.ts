@@ -8,11 +8,11 @@ async function initServer(): Promise<FastifyInstance> {
 	const fastify = Fastify({ logger: true });
 
 	// init keycloak
-	const keycloak = Keycloak.config({ timeout: 5000, baseURL: config['auth-server-url'] });
+	const keycloak = new Keycloak(config);
 
 	// Run authorization flow in all endpoints
 	fastify.addHook('preHandler', (req, reply, done) => {
-		if (!keycloak.verify(req.headers.authorization?.split(' ')[1], config['public-key'])) {
+		if (!keycloak.verify(req.headers.authorization?.split(' ')[1])) {
 			reply.status(401).send({ error: 'HTTP 401 Unauthorized' });
 		}
 
